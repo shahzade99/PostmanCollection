@@ -1,0 +1,162 @@
+{
+  "info": {
+    "_postman_id": "6f285aec-eec5-4d92-90d3-1304d4f52b3d",
+    "name": "HTTPbin.org",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34903958"
+  },
+  "item": [
+    {
+      "name": "GetReq1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log(\"This is script level Post-Req Script\", pm.info.requestName)\r\n// Check the response status code\r\npm.test(\"Response code is 200\", function () {\r\n    pm.expect(pm.response.code).to.eql(200);\r\n});\r\n\r\n// Check response performance and payload size\r\npm.test(\"Response time is under 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"Response body size is under 100 KB\", function () {\r\n    pm.expect(pm.response.size().body).to.be.below(100 * 1024);\r\n});\r\n\r\nconst posts = pm.response.json();\r\n\r\n// Check each element in the posts response\r\npm.test(\"Response is a non-empty array of valid posts\", function () {\r\n    pm.expect(posts).to.be.an(\"array\").that.is.not.empty;\r\n\r\n    posts.forEach(function (post) {\r\n        pm.expect(post).to.be.an(\"object\").and.not.to.be.null;\r\n        pm.expect(post).to.have.all.keys(\"userId\", \"id\", \"title\", \"body\");\r\n        pm.expect(post.userId).to.be.a(\"number\");\r\n        pm.expect(post.id).to.be.a(\"number\");\r\n        pm.expect(post.title).to.be.a(\"string\");\r\n        pm.expect(post.body).to.be.a(\"string\");\r\n    });\r\n});"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log(\"This is Request level Pre-Req Script\", pm.info.requestName)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*"
+          }
+        ],
+        "url": {
+          "raw": "http://httpbin.org/get",
+          "protocol": "http",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetRequest2",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log(\"This is a Script pre-req script\",pm.info.requestName);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log(\"This is script level Post-Req Script\", pm.info.requestName)\r\n\r\n// Check the response status code\r\npm.test(\"Response code is 200\", function () {\r\n    pm.expect(pm.response.code).to.eql(200);\r\n});\r\n\r\n// Check response performance and payload size\r\npm.test(\"Response time is under 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"Response body size is under 100 KB\", function () {\r\n    pm.expect(pm.response.size().body).to.be.below(100 * 1024);\r\n});\r\n\r\nconst posts = pm.response.json();\r\n\r\n// Check each element in the posts response\r\npm.test(\"Response is a non-empty array of valid posts\", function () {\r\n    pm.expect(posts).to.be.an(\"array\").that.is.not.empty;\r\n\r\n    posts.forEach(function (post) {\r\n        pm.expect(post).to.be.an(\"object\").and.not.to.be.null;\r\n        pm.expect(post).to.have.all.keys(\"userId\", \"id\", \"title\", \"body\");\r\n        pm.expect(post.userId).to.be.a(\"number\");\r\n        pm.expect(post.id).to.be.a(\"number\");\r\n        pm.expect(post.title).to.be.a(\"string\");\r\n        pm.expect(post.body).to.be.a(\"string\");\r\n    });\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*"
+          }
+        ],
+        "url": {
+          "raw": "http://httpbin.org/get",
+          "protocol": "http",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetRequest3",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log(\"This is a script level pre-req script\",pm.info.requestName);"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "console.log(\"This is script level Post-Req Script\", pm.info.requestName)\r\n// Check the response status code\r\npm.test(\"Response code is 200\", function () {\r\n    pm.expect(pm.response.code).to.eql(200);\r\n});\r\n\r\n// Check response performance and payload size\r\npm.test(\"Response time is under 2000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(2000);\r\n});\r\n\r\npm.test(\"Response body size is under 100 KB\", function () {\r\n    pm.expect(pm.response.size().body).to.be.below(100 * 1024);\r\n});\r\n\r\nconst posts = pm.response.json();\r\n\r\n// Check each element in the posts response\r\npm.test(\"Response is a non-empty array of valid posts\", function () {\r\n    pm.expect(posts).to.be.an(\"array\").that.is.not.empty;\r\n\r\n    posts.forEach(function (post) {\r\n        pm.expect(post).to.be.an(\"object\").and.not.to.be.null;\r\n        pm.expect(post).to.have.all.keys(\"userId\", \"id\", \"title\", \"body\");\r\n        pm.expect(post.userId).to.be.a(\"number\");\r\n        pm.expect(post.id).to.be.a(\"number\");\r\n        pm.expect(post.title).to.be.a(\"string\");\r\n        pm.expect(post.body).to.be.a(\"string\");\r\n    });\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*"
+          }
+        ],
+        "url": {
+          "raw": "http://httpbin.org/get",
+          "protocol": "http",
+          "host": [
+            "httpbin",
+            "org"
+          ],
+          "path": [
+            "get"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "console.log(\"This is collection level Pre-Req Script\", pm.info.requestName)"
+        ],
+        "type": "text/javascript"
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "exec": [
+          "console.log(\"This is collection level Post-Req Script\", pm.info.requestName)"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ]
+}
