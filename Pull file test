@@ -1,2 +1,3 @@
-This is a file created to verify pull request on the local machine.
+iThis is a file created to verify pull request on the local machine.
 once we hit git -u pull to local machine, this file should automaticallly shows in the local repo.
+New changes are being added from git local repo side.
